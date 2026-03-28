@@ -1,31 +1,15 @@
-import { Connection, Pool } from "pg";
+import { Pool } from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const pool = new Pool({
     connectionString: process.env.DB_URL,
-    ssl: 
-        process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
-    
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
 
-})
-
-try {
-    const client = await pool.connect();
-    console.log("Connected to database successfully")
-    try {
-        await client.query("ALTER TABLE products ALTER COLUMN picture TYPE text")
-        console.log("Ensured products.picture column is TEXT")
-    } catch (alterError) {
-        if (!alterError.message.includes('column \"picture\" of relation \"products\" does not exist')) {
-            console.warn("Could not alter products.picture column type:", alterError.message)
-        }
-    }
-    client.release(); // Release the client back to the pool after use
-    
-} catch (error) {
-    console.log("Connection Error to database", error)
-}
+pool.on('error', (err) => {
+    console.error('Unexpected database error:', err);
+});
 
 export default pool;
