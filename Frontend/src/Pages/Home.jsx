@@ -64,7 +64,7 @@ const Home = () => {
                   <div className="space-y-4 p-5">
                     <div className="flex items-center justify-between gap-3">
                       <h2 className="text-xl font-semibold text-white">{product.name}</h2>
-                      <span className="rounded-full bg-sky-500/15 px-3 py-1 text-sm font-medium text-sky-300">${product.price}</span>
+                      <span className="rounded-full bg-sky-500/15 px-3 py-1 text-sm font-medium text-sky-300">Tsh {product.price}</span>
                     </div>
                     <p className="text-slate-300">{product.description}</p>
                     <div className="text-sm text-slate-400">Click for details</div>

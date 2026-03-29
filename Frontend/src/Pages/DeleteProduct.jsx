@@ -67,7 +67,7 @@ const DeleteProduct = () => {
                 </div>
                 <div className="p-5">
                   <h2 className="text-lg font-semibold text-white">{product.name}</h2>
-                  <p className="mt-2 text-slate-300">${product.price}</p>
+                  <p className="mt-2 text-slate-300">Tsh {product.price}</p>
                   <p className="mt-3 text-slate-400 line-clamp-3">{product.description}</p>
                   <button
                     type="button"

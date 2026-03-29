@@ -4,6 +4,7 @@ import axios from 'axios'
 import { API_URL } from '../api.js'
 
 const API_BASE = API_URL
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -62,9 +63,21 @@ const ProductDetails = () => {
             <h1 className="text-3xl font-semibold text-white">{product?.name}</h1>
             <p className="mt-2 text-slate-400">Detailed view of the selected product.</p>
           </div>
-          <Link to="/" className="inline-flex rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-400">
-            Back to Home
-          </Link>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link to="/" className="inline-flex rounded-full bg-slate-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">
+              Back to Home
+            </Link>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
+              )}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+            >
+              Contact on WhatsApp
+            </a>
+          </div>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -75,7 +88,7 @@ const ProductDetails = () => {
           <div className="space-y-6 rounded-3xl border border-slate-700 bg-slate-950/80 p-8">
             <div className="rounded-3xl bg-slate-900/80 p-6 text-slate-200">
               <p className="text-sm uppercase tracking-[0.24em] text-sky-400">Price</p>
-              <p className="mt-2 text-3xl font-semibold text-white">${product?.price}</p>
+              <p className="mt-2 text-3xl font-semibold text-white">Tsh {product?.price}</p>
             </div>
             <div className="space-y-4">
               <div>
