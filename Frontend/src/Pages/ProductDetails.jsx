@@ -4,7 +4,7 @@ import axios from 'axios'
 import { API_URL } from '../api.js'
 
 const API_BASE = API_URL
-const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
+const WHATSAPP_NUMBER = (import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D+/g, '')
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -68,14 +68,25 @@ const ProductDetails = () => {
               Back to Home
             </Link>
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
-              )}`}
+              href={
+                WHATSAPP_NUMBER
+                  ? `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
+                      `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
+                    )}`
+                  : undefined
+              }
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+              onClick={(event) => {
+                if (!WHATSAPP_NUMBER) event.preventDefault()
+              }}
+              className={`inline-flex rounded-full px-5 py-3 text-sm font-semibold text-white transition ${
+                WHATSAPP_NUMBER
+                  ? 'bg-emerald-500 hover:bg-emerald-400'
+                  : 'cursor-not-allowed bg-slate-700 text-slate-400'
+              }`}
             >
-              Contact on WhatsApp
+              {WHATSAPP_NUMBER ? 'Contact on WhatsApp' : 'WhatsApp number not configured'}
             </a>
           </div>
         </div>
