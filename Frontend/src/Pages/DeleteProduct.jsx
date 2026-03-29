@@ -13,7 +13,7 @@ const DeleteProduct = () => {
     const fetchProducts = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(`${API_BASE}/products`)
+        const response = await axios.get(`${API_BASE}/api/products`)
         const safeProducts = (response.data.data ?? []).map(({ id, ...rest }) => ({
           ...rest,
           productId: id,

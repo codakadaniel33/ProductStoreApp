@@ -60,7 +60,7 @@ const UpdateProducts = () => {
     }
 
     try {
-      await axios.put(`${API_BASE}/products/update/${selectedProductId}`, formData)
+      await axios.put(`${API_BASE}/api/products/update/${selectedProductId}`, formData)
       setStatus('Product updated successfully.')
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to update product.')
