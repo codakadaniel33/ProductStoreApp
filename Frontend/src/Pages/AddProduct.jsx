@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { API_URL } from '../api.js'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? `${API_URL}/api`
+const API_BASE = API_URL
 
 const AddProduct = () => {
   const navigate = useNavigate()
