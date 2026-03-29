@@ -57,17 +57,26 @@ const DeleteProduct = () => {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {products.map((product) => (
-              <div key={product.productId} className="rounded-3xl border border-slate-700 bg-slate-900/80 p-5 shadow-xl shadow-black/20">
-                <h2 className="text-lg font-semibold text-white">{product.name}</h2>
-                <p className="mt-2 text-slate-300">${product.price}</p>
-                <p className="mt-3 text-slate-400 line-clamp-3">{product.description}</p>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(product.productId)}
-                  className="mt-5 w-full rounded-full bg-rose-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-400"
-                >
-                  Delete Product
-                </button>
+              <div key={product.productId} className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900/80 shadow-xl shadow-black/20">
+                <div className="h-56 bg-slate-800">
+                  <img
+                    src={product.picture}
+                    alt={product.name}
+                    className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <h2 className="text-lg font-semibold text-white">{product.name}</h2>
+                  <p className="mt-2 text-slate-300">${product.price}</p>
+                  <p className="mt-3 text-slate-400 line-clamp-3">{product.description}</p>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(product.productId)}
+                    className="mt-5 w-full rounded-full bg-rose-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-rose-400"
+                  >
+                    Delete Product
+                  </button>
+                </div>
               </div>
             ))}
           </div>
