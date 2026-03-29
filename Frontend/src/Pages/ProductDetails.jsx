@@ -4,7 +4,7 @@ import axios from 'axios'
 import { API_URL } from '../api.js'
 
 const API_BASE = API_URL
-const WHATSAPP_NUMBER = (import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D+/g, '')
+const WHATSAPP_NUMBER = String(import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D+/g, '')
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -70,10 +70,10 @@ const ProductDetails = () => {
             <a
               href={
                 WHATSAPP_NUMBER
-                  ? `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
+                  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
                       `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
                     )}`
-                  : `https://api.whatsapp.com/send?text=${encodeURIComponent(
+                  : `https://wa.me/?text=${encodeURIComponent(
                       `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
                     )}`
               }
