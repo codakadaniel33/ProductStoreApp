@@ -8,7 +8,7 @@ dotenv.config();
 
 const frontend_port = process.env.CLIENT_PORT;
 const backend_port = process.env.SERVER_PORT;
-const clientOrigin = frontend_port ? `http://localhost:${frontend_port}` : 'http://localhost:5173';
+const clientOrigin = "https://productstoreappv2.onrender.com"
 
 const app = express();
 const corsOptions = {
