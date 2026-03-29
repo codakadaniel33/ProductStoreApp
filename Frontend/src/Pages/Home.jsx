@@ -16,7 +16,7 @@ const Home = () => {
       setError('')
 
       try {
-        const response = await axios.get(`${API_BASE}/products`)
+        const response = await axios.get(`${API_BASE}/api/products`)
         setProducts(response.data.data ?? [])
       } catch (err) {
         setError(err.response?.data?.message || 'Could not load products')

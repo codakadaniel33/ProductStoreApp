@@ -14,7 +14,7 @@ const UpdateProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${API_BASE}/products`)
+        const response = await axios.get(`${API_BASE}/api/products`)
         const safeProducts = (response.data.data ?? []).map(({ id, ...rest }) => ({
           ...rest,
           productId: id,

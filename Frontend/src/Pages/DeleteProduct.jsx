@@ -32,7 +32,7 @@ const DeleteProduct = () => {
   const handleDelete = async (productId) => {
     setMessage('')
     try {
-      await axios.delete(`${API_BASE}/products/delete/${productId}`)
+      await axios.delete(`${API_BASE}/api/products/delete/${productId}`)
       setProducts((current) => current.filter((product) => product.productId !== productId))
       setMessage('Product deleted successfully.')
     } catch {

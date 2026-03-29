@@ -20,7 +20,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors(corsOptions))
 app.use(morgan("dev"))
 
-app.use("/", productsRoute);
+app.use("/api", productsRoute);
 
 app.listen(backend_port, ()=>{
     console.log(`serve is running on port: ${backend_port}`)

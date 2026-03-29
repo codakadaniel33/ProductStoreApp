@@ -44,7 +44,7 @@ const AddProduct = () => {
     }
 
     try {
-      await axios.post(`${API_BASE}/products/create`, {
+      await axios.post(`${API_BASE}/api/products/create`, {
         name,
         price,
         description,

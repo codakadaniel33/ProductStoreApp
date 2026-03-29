@@ -17,7 +17,7 @@ const ProductDetails = () => {
       setError('')
 
       try {
-        const response = await axios.get(`${API_BASE}/products/${id}`)
+        const response = await axios.get(`${API_BASE}/api/products/${id}`)
         setProduct(response.data.data)
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to load product details.')
