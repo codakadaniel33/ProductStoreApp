@@ -73,20 +73,15 @@ const ProductDetails = () => {
                   ? `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
                       `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
                     )}`
-                  : undefined
+                  : `https://api.whatsapp.com/send?text=${encodeURIComponent(
+                      `Hi! I am interested in the product ${product?.name} priced at Tsh ${product?.price}. Can you provide more details?`
+                    )}`
               }
               target="_blank"
               rel="noreferrer noopener"
-              onClick={(event) => {
-                if (!WHATSAPP_NUMBER) event.preventDefault()
-              }}
-              className={`inline-flex rounded-full px-5 py-3 text-sm font-semibold text-white transition ${
-                WHATSAPP_NUMBER
-                  ? 'bg-emerald-500 hover:bg-emerald-400'
-                  : 'cursor-not-allowed bg-slate-700 text-slate-400'
-              }`}
+              className="inline-flex rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
             >
-              {WHATSAPP_NUMBER ? 'Contact on WhatsApp' : 'WhatsApp number not configured'}
+              Contact on WhatsApp
             </a>
           </div>
         </div>
