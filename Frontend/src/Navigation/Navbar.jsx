@@ -7,7 +7,6 @@ import '../App.css'
 
 const navLinks = [
   { to: '/', label: 'Home', Icon: AiOutlineHome },
-  { to: '/create', label: 'Create', Icon: AiOutlinePlusCircle },
   { to: '/update', label: 'Update', Icon: AiOutlineEdit },
   { to: '/delete', label: 'Delete', Icon: AiOutlineDelete },
   { to: '/add', label: 'Add', Icon: AiOutlineFolderAdd },
@@ -37,7 +36,7 @@ const Navbar = () => {
 
         <nav
           id="primary-navigation"
-          className={`w-full flex-col gap-2 text-sm font-medium sm:flex sm:w-auto ${menuOpen ? 'flex' : 'hidden'}`}
+          className={`w-full flex-col gap-2 text-sm font-medium sm:flex sm:flex-row sm:w-auto ${menuOpen ? 'flex' : 'hidden'}`}
         >
           {navLinks.map(({ to, label, Icon }) => (
             <NavLink
