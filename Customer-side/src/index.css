@@ -1,0 +1,19 @@
+.scroll-card {
+  opacity: 0;
+  transform: translateY(30px) rotate(-6deg);
+  transition: transform 0.75s ease-out, opacity 0.75s ease-out, box-shadow 0.35s ease;
+}
+
+.scroll-card.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.scroll-card-right {
+  transform: translateY(30px) rotate(6deg);
+}
+
+.scroll-card:hover {
+  transform: translateY(-6px) rotate(0deg);
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.18);
+}
