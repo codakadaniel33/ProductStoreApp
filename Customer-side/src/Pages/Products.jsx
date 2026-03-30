@@ -97,12 +97,16 @@ const Products = () => {
       ) : (
         <div className="grid gap-6 lg:grid-cols-2">
           {sortedProducts.map((product) => (
-            <article key={product.id} className="overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
+            <Link
+              key={product.id}
+              to={`/products/${product.id}`}
+              className="group overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl hover:cursor-pointer"
+            >
               <div className="relative h-64 bg-slate-100">
                 <img
                   src={product.picture}
                   alt={product.name}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />
                 {latestIds.has(product.id) ? (
                   <span className="absolute right-4 top-4 rounded-full bg-red-600 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white animate-pulse">
@@ -119,7 +123,7 @@ const Products = () => {
                 </div>
                 <p className="text-slate-600 leading-7">{product.description}</p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       )}
