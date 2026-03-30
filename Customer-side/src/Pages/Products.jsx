@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import api from '../api.js';
+import LoadingSpinner from '../components/LoadingSpinner.jsx';
 
 const currencyFormatter = new Intl.NumberFormat('en-TZ', {
   style: 'currency',
@@ -89,14 +90,7 @@ const Products = () => {
       ) : null}
 
       {loading ? (
-        <div className="rounded-3xl bg-white px-8 py-10 shadow-lg">
-          <div className="flex h-48 items-center justify-center">
-            <div className="flex items-center gap-4">
-              <div className="h-14 w-14 animate-spin rounded-full border-4 border-slate-200 border-t-slate-900" aria-hidden="true"></div>
-              <span className="sr-only">Loading products</span>
-            </div>
-          </div>
-        </div>
+        <LoadingSpinner message="Loading products..." />
       ) : error ? (
         <div className="rounded-3xl bg-white px-8 py-10 shadow-lg text-red-600">{error}</div>
       ) : products.length === 0 ? (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import api from '../api.js';
+import LoadingSpinner from '../components/LoadingSpinner.jsx';
 
 const currencyFormatter = new Intl.NumberFormat('en-TZ', {
   style: 'currency',
@@ -37,7 +38,7 @@ const ProductDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="rounded-3xl bg-white px-8 py-10 shadow-lg text-slate-600">Loading product...</div>;
+    return <LoadingSpinner message="Loading product..." />;
   }
 
   if (error) {
