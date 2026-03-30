@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
+import AnnouncementBar from '../components/AnnouncementBar';
 
 const Home = () => {
   return (
-    <section className="space-y-8">
-      <div className="rounded-3xl bg-white px-8 py-12 shadow-lg">
+    <div className="space-y-8">
+      <AnnouncementBar />
+      <section className="space-y-8">
+        <div className="rounded-3xl bg-white px-6 py-10 shadow-lg sm:px-8 sm:py-12">
         <h1 className="text-4xl font-semibold text-slate-900 sm:text-5xl">Browse the latest posted products</h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
           Discover customer-ready products posted by your team. This site is the customer-facing storefront, so admin tools are intentionally hidden.
@@ -31,6 +34,7 @@ const Home = () => {
         </article>
       </div>
     </section>
+  </div>
   );
 };
 
