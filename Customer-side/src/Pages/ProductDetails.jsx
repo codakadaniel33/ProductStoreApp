@@ -59,7 +59,7 @@ Image: ${product?.picture}
 
 Please let me know if it is still available or how to place an order.`
   );
-  const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${contactText}`;
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${contactText}`;
 
   return (
     <section className="space-y-8">
