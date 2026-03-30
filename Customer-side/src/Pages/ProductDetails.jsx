@@ -8,7 +8,7 @@ const currencyFormatter = new Intl.NumberFormat('en-TZ', {
   maximumFractionDigits: 0,
 });
 
-const rawWhatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '255759672868';
+const rawWhatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '255772095262';
 const whatsappNumber = rawWhatsappNumber.replace(/[^0-9]/g, '');
 
 const ProductDetails = () => {
