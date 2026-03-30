@@ -8,7 +8,7 @@ const currencyFormatter = new Intl.NumberFormat('en-TZ', {
   maximumFractionDigits: 0,
 });
 
-const rawWhatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '255692533360';
+const rawWhatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '255759672868';
 const whatsappNumber = rawWhatsappNumber.replace(/[^0-9]/g, '');
 
 const ProductDetails = () => {
@@ -91,7 +91,7 @@ Please let me know if it is still available or how to place an order.`
                 rel="noopener noreferrer"
                 className="rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
               >
-                Contact on WhatsApp For more details,!
+                Contact me on WhatsApp For more details by clicking here!
               </a>
             </div>
           </div>
