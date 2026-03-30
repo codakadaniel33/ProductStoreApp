@@ -40,7 +40,7 @@ const AnnouncementBar = () => {
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-semibold text-slate-900">New arrival:</span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-rose-100 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-rose-700">
+              <span className="inline-flex items-center gap-2 rounded-full bg-rose-100 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-rose-700 animate-pulse">
                 NEW
               </span>
             </div>
