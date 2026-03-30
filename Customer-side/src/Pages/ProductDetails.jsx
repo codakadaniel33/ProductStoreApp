@@ -47,7 +47,17 @@ const ProductDetails = () => {
     return null;
   }
 
-  const contactText = encodeURIComponent(`Hello, I am interested in the product ${product?.name}. Could you share more details?`);
+  const contactText = encodeURIComponent(
+    `Hello, I am interested in this product and would like to know more details.
+
+Product name: ${product?.name}
+Product ID: ${product?.id}
+Price: ${currencyFormatter.format(product?.price ?? 0)}
+Description: ${product?.description}
+Image: ${product?.picture}
+
+Please let me know if it is still available or how to place an order.`
+  );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${contactText}`;
 
   return (
