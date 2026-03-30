@@ -89,7 +89,14 @@ const Products = () => {
       ) : null}
 
       {loading ? (
-        <div className="rounded-3xl bg-white px-8 py-10 shadow-lg text-slate-600">Loading products...</div>
+        <div className="rounded-3xl bg-white px-8 py-10 shadow-lg">
+          <div className="flex h-48 items-center justify-center">
+            <div className="flex items-center gap-4">
+              <div className="h-14 w-14 animate-spin rounded-full border-4 border-slate-200 border-t-slate-900" aria-hidden="true"></div>
+              <span className="sr-only">Loading products</span>
+            </div>
+          </div>
+        </div>
       ) : error ? (
         <div className="rounded-3xl bg-white px-8 py-10 shadow-lg text-red-600">{error}</div>
       ) : products.length === 0 ? (
