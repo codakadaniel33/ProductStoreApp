@@ -8,13 +8,22 @@ dotenv.config();
 
 const frontend_port = process.env.CLIENT_PORT;
 const backend_port = process.env.SERVER_PORT;
-const clientOrigin = "https://productstoreappv2.onrender.com"
+const allowedOrigins = (process.env.CLIENT_ORIGINS || 'http://localhost:5173,https://productstoreappv2.onrender.com,https://gifted-store.onrender.com')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 const app = express();
 const corsOptions = {
-    origin: clientOrigin,
-    credentials: true
-}
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS policy does not allow access from origin ${origin}`));
+    }
+  },
+  credentials: true,
+};
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors(corsOptions))
