@@ -49,10 +49,10 @@ const AnnouncementBar = () => {
         </div>
 
         <Link
-          to={`/products/${latestProduct.id}`}
+          to="/products?latest=true"
           className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 sm:w-auto"
         >
-          View product
+          View new arrivals
         </Link>
       </div>
     </div>

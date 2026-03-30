@@ -2,6 +2,12 @@ import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import api from '../api.js';
 
+const currencyFormatter = new Intl.NumberFormat('en-TZ', {
+  style: 'currency',
+  currency: 'TZS',
+  maximumFractionDigits: 0,
+});
+
 const Products = () => {
   const [searchParams] = useSearchParams();
   const showLatest = searchParams.get('latest') === 'true';
@@ -29,7 +35,7 @@ const Products = () => {
   }, []);
 
   const sortedProducts = [...products].sort((a, b) => b.id - a.id);
-  const latestProducts = sortedProducts.slice(0, 3);
+  const latestProducts = sortedProducts.slice(0, 10);
   const latestIds = new Set(latestProducts.map((product) => product.id));
 
   return (
@@ -72,7 +78,7 @@ const Products = () => {
                   <h3 className="text-xl font-semibold text-slate-900">{product.name}</h3>
                   <p className="text-slate-600 text-sm leading-6">{product.description}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-semibold text-slate-900">${product.price}</span>
+                    <span className="text-lg font-semibold text-slate-900">{currencyFormatter.format(product.price)}</span>
                     <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">New</span>
                   </div>
                 </div>
@@ -108,7 +114,7 @@ const Products = () => {
                 <div className="flex items-center justify-between gap-4">
                   <h2 className="text-xl font-semibold text-slate-900">{product.name}</h2>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
-                    ${product.price}
+                    {currencyFormatter.format(product.price)}
                   </span>
                 </div>
                 <p className="text-slate-600 leading-7">{product.description}</p>
