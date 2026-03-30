@@ -55,7 +55,6 @@ Product name: ${product?.name}
 Product ID: ${product?.id}
 Price: ${currencyFormatter.format(product?.price ?? 0)}
 Description: ${product?.description}
-Image: ${product?.picture}
 
 Please let me know if it is still available or how to place an order.`
   );
