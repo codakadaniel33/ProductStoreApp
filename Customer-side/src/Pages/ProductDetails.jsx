@@ -8,7 +8,8 @@ const currencyFormatter = new Intl.NumberFormat('en-TZ', {
   maximumFractionDigits: 0,
 });
 
-const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '255692533360';
+const rawWhatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '255692533360';
+const whatsappNumber = rawWhatsappNumber.replace(/[^0-9]/g, '');
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -58,7 +59,7 @@ Image: ${product?.picture}
 
 Please let me know if it is still available or how to place an order.`
   );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${contactText}`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${contactText}`;
 
   return (
     <section className="space-y-8">
@@ -90,7 +91,7 @@ Please let me know if it is still available or how to place an order.`
                 rel="noopener noreferrer"
                 className="rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
               >
-                Contact seller on WhatsApp
+                Contact on WhatsApp For more details,!
               </a>
             </div>
           </div>
