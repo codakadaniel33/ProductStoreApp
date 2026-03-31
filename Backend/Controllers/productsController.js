@@ -70,19 +70,33 @@ export const deleteProducts = async (req, res) => {
 
 export const createProducts = async (req, res) => {
     try {
-        const { name, price, description, picture} = req.body;  
+        const { name, price, description, picture} = req.body;
+        const numericPrice = parseFloat(price);
 
-        if (!name || !price || !description || !picture) {
+        if (!name || price === undefined || price === null || description === undefined || description === null || !picture) {
             return res.status(400).json({  
                 message: "All fields (name, price, description, picture) are required",
                 success: false
             });
         }
 
-       
+        if (Number.isNaN(numericPrice)) {
+            return res.status(400).json({
+                message: "Price must be a valid number",
+                success: false
+            });
+        }
+
+        console.log('Creating new product:', {
+            name,
+            price: numericPrice,
+            descriptionLength: description?.length,
+            pictureLength: picture?.length,
+        });
+
         const result = await pool.query(
             "INSERT INTO products (name, price, description, picture) VALUES ($1, $2, $3, $4) RETURNING *",
-            [name, price, description, picture]
+            [name, numericPrice, description, picture]
         );
 
         if (result.rows.length > 0) {
@@ -98,7 +112,7 @@ export const createProducts = async (req, res) => {
             });
         }
     } catch (error) {
-        console.error("Error in createProducts:", error.message);
+        console.error("Error in createProducts:", error);
         return res.status(500).json({
             message: "Internal server error",
             success: false,
