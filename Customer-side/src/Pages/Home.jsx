@@ -88,13 +88,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-100/20 to-purple-100/20 pointer-events-none"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-800/30 via-transparent to-slate-800/30 pointer-events-none"></div>
       <div className="relative space-y-8">
         <AnnouncementBar />
         <section className="space-y-8">
-          <div className="rounded-3xl bg-gradient-to-r from-white/90 to-white/70 backdrop-blur-sm px-6 py-10 shadow-xl sm:px-8 sm:py-12 border border-white/20">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-3xl"></div>
+          <div className="rounded-3xl bg-gradient-to-r from-white/95 to-white/85 backdrop-blur-sm px-6 py-10 shadow-xl sm:px-8 sm:py-12 border border-white/20">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl"></div>
             <div className="relative">
               <h1 className="text-4xl font-semibold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 bg-clip-text text-transparent sm:text-5xl">Welcome to Gifted Services</h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
