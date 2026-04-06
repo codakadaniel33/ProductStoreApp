@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import AnnouncementBar from '../components/AnnouncementBar';
+import Footer from '../components/Footer';
 
 const Home = () => {
   const cardRefs = useRef([]);
@@ -240,6 +241,7 @@ const Home = () => {
           </article>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
