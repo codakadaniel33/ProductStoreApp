@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-slate-900">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         <main>
