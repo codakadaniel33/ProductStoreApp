@@ -5,6 +5,7 @@ import AnnouncementBar from '../components/AnnouncementBar';
 const Home = () => {
   const cardRefs = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const slideshowCards = [
     {
@@ -46,12 +47,25 @@ const Home = () => {
   ];
 
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideshowCards.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [slideshowCards.length]);
+  }, [slideshowCards.length, isPaused]);
+
+  const handlePrevSlide = () => {
+    setIsPaused(true);
+    setCurrentSlide((prev) => (prev - 1 + slideshowCards.length) % slideshowCards.length);
+    setTimeout(() => setIsPaused(false), 5000);
+  };
+
+  const handleNextSlide = () => {
+    setIsPaused(true);
+    setCurrentSlide((prev) => (prev + 1) % slideshowCards.length);
+    setTimeout(() => setIsPaused(false), 5000);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -101,7 +115,9 @@ const Home = () => {
           {/* Animated Slideshow Section */}
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-100/80 to-white/80 backdrop-blur-sm p-8 shadow-xl border border-white/20">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10 rounded-3xl"></div>
-            <div className="relative flex animate-slide-right">
+            
+            {/* Desktop: Continuous sliding animation */}
+            <div className="hidden lg:flex animate-slide-right">
               {slideshowCards.map((card, index) => (
                 <div
                   key={index}
@@ -129,6 +145,63 @@ const Home = () => {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile/Tablet: Single card with navigation */}
+            <div className="lg:hidden">
+              <div className="relative flex items-center justify-center">
+                {/* Previous Arrow */}
+                <button
+                  onClick={handlePrevSlide}
+                  className="absolute left-0 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-colors"
+                  aria-label="Previous slide"
+                >
+                  <svg className="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Current Card */}
+                <div
+                  className={`w-full max-w-sm mx-8 rounded-2xl ${slideshowCards[currentSlide].bgColor} p-6 transform transition-all duration-500 shadow-xl backdrop-blur-sm border border-white/10`}
+                >
+                  <h3 className={`text-xl font-bold ${slideshowCards[currentSlide].textColor} mb-3`}>
+                    {slideshowCards[currentSlide].title}
+                  </h3>
+                  <p className={`${slideshowCards[currentSlide].textColor} opacity-90 leading-relaxed`}>
+                    {slideshowCards[currentSlide].description}
+                  </p>
+                </div>
+
+                {/* Next Arrow */}
+                <button
+                  onClick={handleNextSlide}
+                  className="absolute right-0 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-colors"
+                  aria-label="Next slide"
+                >
+                  <svg className="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {slideshowCards.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      setIsPaused(true);
+                      setTimeout(() => setIsPaused(false), 5000);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === currentSlide ? 'bg-blue-600' : 'bg-slate-300'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
