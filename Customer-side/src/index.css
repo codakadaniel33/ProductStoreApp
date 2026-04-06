@@ -17,3 +17,16 @@
   transform: translateY(-6px) rotate(0deg);
   box-shadow: 0 28px 60px rgba(15, 23, 42, 0.18);
 }
+
+@keyframes slide-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-right {
+  animation: slide-right 20s linear infinite;
+}
